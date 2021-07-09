@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rocket.Q - Perguntas e respostas</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet"> 
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha512-0S+nbAYis87iX26mmj/+fWt1MmaKCv80H+Mbo+Ne7ES4I6rxswpfnC6PxmLiw33Ywj2ghbtTw0FkLbMWqh4F7Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles/global.css">
+  <link rel="stylesheet" href="/styles/room.css">
+  <link rel="stylesheet" href="/styles/modal.css">
+  <link rel="stylesheet" href="/styles/darkMode.css">
+
+  <!-- SCRIPTS -->
+  <script src="/scripts/main.js" defer type="module"></script>
+  <script src="/scripts/darkMode.js" defer type="module"></script>
+</head>
+<body>
+   <div id="room" class="content">
+   
+     <header>
+   
+       <a href="/">
+         <img src="/images/logo.svg" alt="Rocket.Q Logo">
+       </a>
+       <div class="dark-mode">
+        <input type="checkbox" class="checkbox" id="checkbox">
+        <label for="checkbox" class="label">
+          <i class="fa fa-moon"></i>
+          <i class="fa fa-sun"></i>
+          <div class="balls"></div>
+        </label>
+     </div>
+        <!-- Buttons -->
+        <div class="buttons">
+          
+          <!-- Button One -->
+          <div class="button outlined" id="room-id" data-id="<%= roomId %>">
+            #<%= roomId %>
+            <img src="/images/copy.svg">
+          </div>
+
+          <!-- Button Two -->
+          <a href="/create-pass" class="button">
+            <img src="/images/user-white.svg" alt="Criar Sala">
+            Criar sala
+          </a>
+        </div>
+     </header>
+
+     <!-- Question form-->
+     <main>
+       <section id="question-form">
+        <h2>Faça sua pergunta</h2>
+        <form action="/question/create/<%= roomId %>" method="POST">
+          <textarea id="question" placeholder="o que você quer pergunta?" name="question"></textarea>
+          <footer>
+            <div>
+              <img src="/images/lock.svg" alt="Cateador">
+              Esta pergunta é anônima
+            </div> 
+            <button>Envia</button>
+          </footer>
+        </form>
+       </section>
+
+       <!-- Questions -->
+      
+       <section id="questions">
+        <h2 class="sr-only">Perguntas da comunidade</h2>
+        <div class="questions">
+
+          <% if(isNoQuestions) {%>
+              <%- include('parts/noquestion') %>
+          <%}%>
+
+          <% questions.forEach(question => { %>
+                <div class="question-wrapper">
+                  <div class="question-content">
+                    <div class="user">
+                      <img src="/images/user.svg" alt="">
+                    </div>
+                    <div class="question">
+                      <p><%= question.title %></p>
+                    </div>
+                  </div>
+                  <div class="actions">
+                    <a href="#" class="check" data-id="<%= question.id %>">
+                      <img src="/images/check.svg" alt="Maraca como lida">
+                      Marca como lida
+                    </a>
+                    <a href="#" class="delete" data-id="<%= question.id %>">
+                      <img src="/images/trash.svg" alt="Lixeira">
+                      Excluir
+                    </a>
+                  </div>
+                </div>
+            <% }); %>
+
+          <% questionsRead.forEach(questionRead => { %>
+              <div class="question-wrapper read">
+                <div class="question-content">
+                  <div class="user">
+                    <img src="/images/user.svg" alt="">
+                  </div>
+                  <div class="question">
+                    <p><%= questionRead.title %></p>
+                  </div>
+                </div>
+                <div class="actions">
+                  <a href="#" class="delete" data-id="<%= questionRead.id %>">
+                    <img src="/images/trash.svg" alt="Lixeira">
+                    Excluir
+                  </a>
+                </div>
+              </div>
+          <%})%>
+        
+        </div>
+       </section>
+     </main>
+   </div>
+
+   <!-- Modal -->
+   <div class="modal-wrapper">
+     <div class="modal">
+       <h2>Excluir pergunta</h2>
+       <p>Tem certeza que você desejá excluir essa pergunta?</p>
+       <form action="#" method="POST">
+         <label class="sr-only" for-id="password"></label>
+         <input type="password" id="password" name="password" placeholder="Preencha sua senha!">
+
+         <div class="buttons">
+           <div class="button grey cancel">Cancela</div>
+           <button class="red">Sim, Excluir</button>
+         </div>
+       </form>
+     </div>
+   </div>
+
+</body>
+</html>

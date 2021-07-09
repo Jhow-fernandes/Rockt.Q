@@ -1,0 +1,176 @@
+.content {
+  max-width: min(112rem, 90%);
+}
+#room header{
+  width: 100%;
+
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+}
+
+#room header .buttons {
+  display:flex;
+}
+
+#room header .buttons .button:nth-child(1) {
+  margin-right: 1.8rem;
+  padding: 1.3rem 1.6rem;
+}
+
+#room header .buttons .button:nth-child(1) img {
+  margin-left: 1rem;
+  width: 2rem;
+  height: 2rem;
+}
+
+#room header .buttons .button:nth-child(2) {
+  padding: 1.3rem 3.2rem;
+}
+
+#room header .buttons .button:nth-child(2) img {
+
+  width: 2rem;
+  height: 2rem;
+}
+
+#room header .dark-mode {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left:0;
+  margin-left: 55rem;
+}
+/* QUESTION FORM */
+
+#question-form h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size:2.8rem;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 2.4rem;
+
+  line-height:4.2rem
+}
+
+/* Editando Formulario de Perguntas anônimas */
+#question-form form{
+  border: .2rem solid var(--greyBlue);
+  padding:1.6rem;
+  border-radius: 0 .8rem .8rem .8rem;
+  margin-bottom: 3rem;
+}
+
+#question-form textarea{
+  resize: none ;
+  background: transparent;
+  border: none;
+  width:100%;
+  outline:none;
+}
+
+#question-form form textarea::placeholder{
+  color: var(--greyBlue);
+}
+
+#question-form form footer{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+}
+
+#question-form form footer > div {
+  display:flex;
+  align-items:center;
+  color: var(--greyLight);
+  font-family: 'Poppins', sans-serif;
+  font-size:1.4rem; 
+  font-weight: 300;
+}
+
+#question-form form footer > div img {
+  margin-right: 0.9rem;
+}
+
+#question-form form footer button{
+  height: auto;
+  padding: .8rem 2.4rem;
+  line-height: 2rem;
+}
+
+
+/* PERGUNTAS DA COMUNIDADE */
+
+.question-wrapper{
+  background: var(--lightBlue);
+  margin-bottom:.8rem;
+  border-radius: 0 .8rem .8rem .8rem;
+  padding: 2.4rem;
+}
+.question-wrapper .question-content{
+  display:flex;
+  align-items:flex-start;
+}
+.question-wrapper .question-content .user{
+  background: var(--blue);
+  clip-path: circle();
+  padding: 1.4rem;
+}
+.question-wrapper .question-content p {
+  margin-left: 1.6rem;
+  word-break: break-word;/*ISSO FAS COM QUE SE O TEXTO FOR MUITO GRANDE ELE QUEBRA EM LINHAS*/
+  display:flex;
+  align-items:center;
+  min-height: 5.2rem;
+}
+
+.question-wrapper .actions{
+  display:flex;
+  align-items:center;
+  justify-content: flex-end;
+}
+.question-wrapper .actions > a {
+  display:flex;
+  align-items:center;
+  text-decoration: none;
+}
+.question-wrapper .actions > a > img {
+  margin-right: .8rem;
+}
+/* APLICANDO MARGIN APENAS NO BUTTON EXCLUIR */
+.question-wrapper .actions > a + a{
+  margin-left: 2.4rem;
+}
+
+/* Question READ */
+.question-wrapper.read{
+  background: var(--greyOpacity);
+}
+.question-wrapper.read .question-content .user{
+  background:var(--greyBlue);
+}
+
+/* No-questions */
+.no-questions {
+  text-align: center;
+  margin-top: 10rem;
+}
+.no-questions img {
+  max-width: 100%;
+  margin-bottom: 1.2rem;
+}
+.no-questions p:nth-child(2){
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.no-questions p:nth-child(3){
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin-top: 1.3rem;
+  line-height:2rem;
+  color: var(--greyMedium);
+}

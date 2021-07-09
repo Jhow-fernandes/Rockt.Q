@@ -1,0 +1,96 @@
+.content{
+  display: grid;
+  grid-template-columns: 60% 40%;
+  grid-template-rows: 11.4rem 1fr;
+
+  grid-template-areas:
+  'header header'
+  'left right'
+}
+
+header {
+  grid-area: header;
+}
+#bg {
+  grid-area: left;
+
+  background: url('/images/bg-home.svg') no-repeat top/contain;
+  background-position-x: -5rem;
+}
+main {
+  grid-area: right;
+
+  display: flex;
+  align-items:center;
+}
+
+main .container{    
+  width: min(36.3rem, 100%);
+}
+
+main h2 {
+  font-family: 'Poppins', sans-serif;
+  color: var(--black);
+  font-size:clamp(20px, 5vw, 2.8rem);
+  margin-bottom: 2.4rem;
+  font-weight: 700;
+}
+
+
+input {
+  border: 0.2rem solid var(--greyBlue);
+  outline: none;
+}
+
+input, button, .button {
+  width:100%;
+  margin-bottom: 1.8rem;
+}
+
+/* Separator line */
+.separator {
+  display: flex;
+  align-items: center;
+
+  margin: 4rem 0;
+}
+
+.separator div:nth-child(2) {
+  color: var(--greyBlue);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+
+  padding: 0 1.35rem;
+  line-height: 0;
+}
+
+/* AQUI ESTOU FALANDO QUAIS PARENTES DA DIV SEPARATOR EU QUERO ATINGIR */
+.separator div:nth-child(1), 
+.separator div:nth-child(3) 
+{
+  background: var(--greyBlue);
+  width:100%;
+  height:1px;
+}
+
+/* Create Balls */
+.ball {
+  background: var(--blue);
+  position:fixed;
+  clip-path: circle();
+  opacity: 0.1;
+
+  width: 21.2rem;
+  height:21.2rem;
+}
+
+.ball.top{
+  top: -56rem;
+  right: -30rem;
+  width:63.3rem;
+  height:63.3rem;
+}
+.ball.bottom{
+  bottom:-19rem;
+  right:0.2rem;
+}
